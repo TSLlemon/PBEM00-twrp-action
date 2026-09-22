@@ -18,11 +18,11 @@ on:
       DEVICE_TREE_URL:
         description: "设备树仓库"
         required: true
-        default: "https://github.com/AmeChanRain/android_device_oppo_PBEM00"
+        default: "https://github.com/TSLlemon/android_device_oppo_PBEM00"
       DEVICE_TREE_BRANCH:
         description: "设备树分支"
         required: true
-        default: "twrp-10"
+        default: "main"
       DEVICE_PATH:
         description: "源码内设备路径"
         required: true
@@ -177,7 +177,7 @@ jobs:
             - Target: `${{ github.event.inputs.BUILD_TARGET }}.img`
 
             **请先 `fastboot boot` 试启动，确认能进 REC 后再考虑 `fastboot flash recovery`。**
-            本包未针对 ColorOS F.29 做过机实测。
+            基于 TSLlemon/android_device_oppo_PBEM00（F.29 保守适配：恢复 mkbootimg args / FBE 旗标）。仍建议先 fastboot boot 试启；若进不去可再试 disable vbmeta verity。
           files: artifacts/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

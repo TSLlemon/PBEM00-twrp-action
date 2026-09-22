@@ -1,7 +1,7 @@
 # PBEM00 TWRP 云编译（GitHub Actions）
 
 为 **OPPO R17 (PBEM00)** 预填的 TWRP 10 云编译仓库。  
-设备树：[TSLlemon/android_device_oppo_PBEM00 (F.29 adapt)](https://github.com/TSLlemon/android_device_oppo_PBEM00 (F.29 adapt))（`twrp-10`）  
+设备树：[AmeChanRain/android_device_oppo_PBEM00](https://github.com/AmeChanRain/android_device_oppo_PBEM00)（`twrp-10`）  
 源码：`minimal-manifest-twrp` / `platform_manifest_twrp_omni` 分支 **`twrp-10.0-deprecated`**
 
 ## 你怎么用
@@ -32,7 +32,7 @@ fastboot boot PBEM00-recovery-xxxx.img    # 先试启动
 | --- | --- |
 | MANIFEST_URL | `https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni` |
 | MANIFEST_BRANCH | `twrp-10.0-deprecated` |
-| DEVICE_TREE_URL | `https://github.com/TSLlemon/android_device_oppo_PBEM00 (F.29 adapt)` |
+| DEVICE_TREE_URL | `https://github.com/AmeChanRain/android_device_oppo_PBEM00` |
 | DEVICE_TREE_BRANCH | `twrp-10` |
 | DEVICE_PATH | `device/oppo/PBEM00` |
 | DEVICE_NAME | `PBEM00` |
