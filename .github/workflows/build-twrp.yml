@@ -18,11 +18,11 @@ on:
       DEVICE_TREE_URL:
         description: "设备树仓库"
         required: true
-        default: "https://github.com/TSLlemon/android_device_oppo_PBEM00"
+        default: "https://github.com/AmeChanRain/android_device_oppo_PBEM00"
       DEVICE_TREE_BRANCH:
         description: "设备树分支"
         required: true
-        default: "main"
+        default: "twrp-10"
       DEVICE_PATH:
         description: "源码内设备路径"
         required: true
@@ -129,6 +129,20 @@ jobs:
             "${{ github.event.inputs.DEVICE_TREE_URL }}" \
             "${{ github.event.inputs.DEVICE_PATH }}"
           ls -la "${{ github.event.inputs.DEVICE_PATH }}"
+
+      - name: Apply F.29 conservative overlay
+        working-directory: ${{ steps.ws.outputs.dir }}
+        run: |
+          OVERLAY="$GITHUB_WORKSPACE/device-overlay/PBEM00"
+          DEST="${{ github.event.inputs.DEVICE_PATH }}"
+          test -d "$OVERLAY"
+          test -d "$DEST"
+          cp -v "$OVERLAY/BoardConfig.mk" "$DEST/BoardConfig.mk"
+          cp -v "$OVERLAY/omni_PBEM00.mk" "$DEST/omni_PBEM00.mk"
+          cp -v "$OVERLAY/system.prop" "$DEST/system.prop"
+          cp -v "$OVERLAY/README_F29_ADAPT.md" "$DEST/README_F29_ADAPT.md" || true
+          echo "---- BoardConfig mkbootimg args ----"
+          grep -n 'MKBOOTIMG\|F.29\|AVB_ENABLE\|CRYPTO_FBE' "$DEST/BoardConfig.mk" | head -40
 
       - name: Build recovery
         working-directory: ${{ steps.ws.outputs.dir }}
